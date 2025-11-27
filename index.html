@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Playwright - Prosta Strona</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="main-title">Witaj na stronie testowej!</h1>
+            <p id="subtitle">To jest prosta strona do testowania Playwright</p>
+        </header>
+
+        <main>
+            <section class="form-section">
+                <h2>Formularz testowy</h2>
+                <form id="test-form">
+                    <div class="form-group">
+                        <label for="name">Imię:</label>
+                        <input type="text" id="name" name="name" placeholder="Wpisz swoje imię" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Wpisz swój email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Wiadomość:</label>
+                        <textarea id="message" name="message" placeholder="Wpisz wiadomość" rows="4"></textarea>
+                    </div>
+                    
+                    <button type="submit" id="submit-btn">Wyślij</button>
+                </form>
+            </section>
+
+            <section class="interactive-section">
+                <h2>Elementy interaktywne</h2>
+                
+                <div class="button-group">
+                    <button id="click-me" class="btn">Kliknij mnie!</button>
+                    <button id="toggle-text" class="btn">Przełącz tekst</button>
+                    <button id="show-alert" class="btn">Pokaż alert</button>
+                </div>
+                
+                <div id="click-counter">
+                    Licznik kliknięć: <span id="counter">0</span>
+                </div>
+                
+                <div id="toggle-content" class="hidden">
+                    <p>Ten tekst można przełączać!</p>
+                </div>
+            </section>
+
+            <section class="recording-section">
+                <h2>Formularz nagrania</h2>
+                <form id="recording-form">
+                    <div class="form-group">
+                        <label for="recording-title">Tytuł nagrania:</label>
+                        <input type="text" id="recording-title" name="recording-title" placeholder="Wpisz tytuł nagrania" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="recording-duration">Czas trwania (minuty):</label>
+                        <input type="number" id="recording-duration" name="recording-duration" placeholder="Wpisz czas w minutach" min="1" max="300" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="recording-quality">Jakość nagrania:</label>
+                        <select id="recording-quality" name="recording-quality" required>
+                            <option value="">Wybierz jakość</option>
+                            <option value="720p">720p HD</option>
+                            <option value="1080p">1080p Full HD</option>
+                            <option value="4k">4K Ultra HD</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="recording-format">Format pliku:</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="recording-format" value="mp4" required> MP4</label>
+                            <label><input type="radio" name="recording-format" value="avi" required> AVI</label>
+                            <label><input type="radio" name="recording-format" value="mov" required> MOV</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="recording-description">Opis nagrania:</label>
+                        <textarea id="recording-description" name="recording-description" placeholder="Opisz zawartość nagrania" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="recording-consent" name="recording-consent" required>
+                            Zgadzam się na przetwarzanie danych nagrania
+                        </label>
+                    </div>
+                    
+                    <button type="submit" id="recording-submit-btn">Rozpocznij nagrywanie</button>
+                </form>
+                
+                <div id="recording-status" class="hidden">
+                    <h3>Status nagrania:</h3>
+                    <p id="recording-info">Przygotowywanie...</p>
+                    <div class="progress-bar">
+                        <div id="progress-fill" class="progress-fill"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="navigation-section">
+                <h2>Nawigacja</h2>
+                <nav>
+                    <ul>
+                        <li><a href="#home" class="nav-link">Strona główna</a></li>
+                        <li><a href="#about" class="nav-link">O nas</a></li>
+                        <li><a href="#contact" class="nav-link">Kontakt</a></li>
+                    </ul>
+                </nav>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Test Playwright</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
