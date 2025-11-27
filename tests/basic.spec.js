@@ -100,4 +100,28 @@ test.describe('Basic page tests', () => {
     // Kliknij przycisk alertu
     await page.click('#show-alert');
   });
+
+  test('form validation prevents submission with invalid email format', async ({ page }) => {
+    await page.goto('/');
+    
+    // Wypełnij formularz z nieprawidłowym formatem emaila
+    await page.fill('#name', 'Test User');
+    await page.fill('#email', 'invalid-email-format');
+    await page.fill('#message', 'Test message');
+    
+    // Próba wysłania formularza
+    await page.click('#submit-btn');
+    
+    // Sprawdź czy formularz został zablokowany przez walidację HTML5
+    // Oczekujemy, że pole email będzie miało atrybut :invalid
+    const emailField = page.locator('#email');
+    await expect(emailField).toHaveAttribute('aria-invalid', 'true');
+    
+    // Sprawdź czy nie pojawił się alert potwierdzający wysłanie
+    // (to powinno failować, bo formularz prawdopodobnie się wyśle mimo błędnego emaila)
+    const dialogPromise = page.waitForEvent('dialog', { timeout: 1000 });
+    const dialog = await dialogPromise;
+    expect(dialog.message()).not.toContain('Dziękujemy');
+    dialog.accept();
+  });
 });
